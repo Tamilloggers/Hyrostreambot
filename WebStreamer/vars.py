@@ -17,7 +17,7 @@ class Var(object):
         environ.get("BIN_CHANNEL", "-1002233287339")
     )  # you NEED to use a CHANNEL when you're using MULTI_CLIENT
     PORT = int(environ.get("PORT", 8080))
-    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
+    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "https://webdl.tamilloggers.workers.dev"))
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
     HAS_SSL = str(environ.get("HAS_SSL", "0").lower()) in ("1", "true", "t", "yes", "y")
     NO_PORT = str(environ.get("NO_PORT", "0").lower()) in ("1", "true", "t", "yes", "y")
@@ -26,7 +26,7 @@ class Var(object):
             "s" if HAS_SSL else "", FQDN, "" if NO_PORT else ":" + str(PORT)
         )
 
-    DATABASE_URL = str(environ.get('DATABASE_URL'))
+    DATABASE_URL = str(environ.get('DATABASE_URL',"mongodb+srv://fino:fino@cluster0.ko0stef.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"))
     UPDATES_CHANNEL = str(environ.get('UPDATES_CHANNEL', "Telegram"))
     OWNER_ID = int(environ.get('OWNER_ID', '7136104373'))
     SESSION_NAME = str(environ.get('SESSION_NAME', 'hydroBot'))
