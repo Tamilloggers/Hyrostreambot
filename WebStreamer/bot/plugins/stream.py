@@ -8,10 +8,10 @@ from WebStreamer.utils.bot_utils import gen_link, validate_user
 from WebStreamer.utils.database import Database
 from WebStreamer.utils.file_properties import get_file_ids, get_file_info
 from WebStreamer.vars import Var
-from pyrogram import filters, Client
-from pyrogram.errors import FloodWait
-from pyrogram.types import Message
-from pyrogram.enums.parse_mode import ParseMode
+from hydrogram import filters, Client
+from hydrogram.errors import FloodWait
+from hydrogram.types import Message
+from hydrogram.enums.parse_mode import ParseMode
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 @StreamBot.on_message(
