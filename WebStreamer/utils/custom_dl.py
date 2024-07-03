@@ -4,11 +4,11 @@ import asyncio
 import logging
 from typing import Dict, Union
 from WebStreamer.bot import work_loads
-from pyrogram import Client, utils, raw
+from hydrogram import Client, utils, raw
 from .file_properties import get_file_ids
-from pyrogram.session import Session, Auth
-from pyrogram.errors import AuthBytesInvalid
-from pyrogram.file_id import FileId, FileType, ThumbnailSource
+from hydrogram.session import Session, Auth
+from hydrogram.errors import AuthBytesInvalid
+from hydrogram.file_id import FileId, FileType, ThumbnailSource
 
 
 class ByteStreamer:
