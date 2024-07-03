@@ -1,6 +1,6 @@
 # This file is a part of FileStreamBot
 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from WebStreamer.vars import Var
 
 class Language:
