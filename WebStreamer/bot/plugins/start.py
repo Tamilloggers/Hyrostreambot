@@ -8,9 +8,9 @@ from WebStreamer.utils.bot_utils import is_user_accepted_tos, validate_user
 from WebStreamer.vars import Var
 from WebStreamer.utils.database import Database
 from WebStreamer.utils.Translation import Language, BUTTON
-from pyrogram import filters, Client
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from pyrogram.enums.parse_mode import ParseMode
+from hydrogram import filters, Client
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+from hydrogram.enums.parse_mode import ParseMode
 
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
