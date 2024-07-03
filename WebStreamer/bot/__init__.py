@@ -2,7 +2,7 @@
 
 
 from ..vars import Var
-from pyrogram import Client
+from hydrogram import Client
 
 if Var.SECONDARY:
     plugins=None
