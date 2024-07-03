@@ -10,7 +10,7 @@ from WebStreamer.utils.Translation import Language, BUTTON
 from WebStreamer.utils.database import Database
 from WebStreamer.utils.human_readable import humanbytes
 from WebStreamer.server.exceptions import FIleNotFound
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 @StreamBot.on_callback_query()
