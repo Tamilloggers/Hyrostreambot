@@ -35,11 +35,11 @@ if DATABASE_URL is not None:
         environ['UPSTREAM_BRANCH'] = config_dict['UPSTREAM_BRANCH']
     client.close()
 
-UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
+UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/Tamilloggers/Hyrostreambot')
 if len(UPSTREAM_REPO) == 0:
-    UPSTREAM_REPO = None
+    UPSTREAM_REPO = 'https://github.com/Tamilloggers/Hyrostreambot'
 
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'master')
 if len(UPSTREAM_BRANCH) == 0:
     UPSTREAM_BRANCH = 'master'
 
