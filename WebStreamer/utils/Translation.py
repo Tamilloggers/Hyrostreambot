@@ -122,7 +122,9 @@ default_desp = {
     'TOS': 'URL of the Terms of Service document. If provided, it will be fetched and used.',
     'MODE': 'Operational mode of the bot. Defaults to "primary". Set to "secondary" if operating in secondary mode.',
     'SECONDARY': 'Whether the bot is running in secondary mode. True if MODE is "secondary", False otherwise.',
-    'LINK_LIMIT': 'Maximum number of files a user can link. If not set, there is no limit.'
+    'LINK_LIMIT': 'Maximum number of files a user can link. If not set, there is no limit.',
+    'UPSTREAM_REPO': "Your github repository link, if your repo is private add https://username:{githubtoken}@github.com/{username}/{reponame} format.",
+    'UPSTREAM_BRANCH': 'Upstream branch for update. Default is master.',
 }
 
 
