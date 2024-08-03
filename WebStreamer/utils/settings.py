@@ -157,6 +157,8 @@ config_dict=({
     'UPSTREAM_REPO': UPSTREAM_REPO,
     'UPSTREAM_BRANCH': UPSTREAM_BRANCH,
 })
+if DATABASE_URL:
+    await Database().update_config(config_dict)
 
 
 async def get_list(key=None, edit_type=None,edit_mode=None, mess=None):
