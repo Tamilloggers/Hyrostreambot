@@ -117,3 +117,12 @@ async def getfile(bot: Client, message: Message):
             await message.reply_cached_media(myfile['file_id'])
         except FileNotFound:
             await message.reply_text(f"{x} :File Not Found")
+
+@StreamBot.on_message(filters.command('restart'))
+    reply = await message.reply_text('Restarting...')
+    textx = f"Done Restart...✅"
+    await reply.edit_text(textx)
+    try:
+        exit()
+    finally:
+        osexecl(executable, executable, "-m", "WebStreamer")
