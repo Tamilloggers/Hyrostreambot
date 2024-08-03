@@ -119,6 +119,13 @@ LINK_LIMIT = int(environ.get("LINK_LIMIT")) if "LINK_LIMIT" in environ else None
 if LINK_LIMIT is None:
     LINK_LIMIT = None
 
+UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/Tamilloggers/Hyrostreambot')
+if len(UPSTREAM_REPO) == 0:
+    UPSTREAM_REPO = 'https://github.com/Tamilloggers/Hyrostreambot'
+
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'master')
+if len(UPSTREAM_BRANCH) == 0:
+    UPSTREAM_BRANCH = 'master'
 
 config_dict=({
     'MULTI_CLIENT': MULTI_CLIENT,
@@ -146,7 +153,9 @@ config_dict=({
     'TOS': TOS,
     'MODE': MODE,
     'SECONDARY': SECONDARY,
-    'LINK_LIMIT': LINK_LIMIT
+    'LINK_LIMIT': LINK_LIMIT,
+    'UPSTREAM_REPO': UPSTREAM_REPO,
+    'UPSTREAM_BRANCH': UPSTREAM_BRANCH,
 })
 
 
