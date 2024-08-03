@@ -10,7 +10,7 @@ from dotenv import dotenv_values
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
 from WebStreamer.server.exceptions import FileNotFound 
-from WebStreamer import bot_id, config_dict, LOGGER
+from WebStreamer import bot_id, config_dict, LOGGER, DATABASE_URL
 from pymongo.errors import PyMongoError
 
 class Database:
