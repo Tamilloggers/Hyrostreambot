@@ -5,7 +5,7 @@
 
 import pymongo
 import time
-import motor.motor_asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import dotenv_values
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
@@ -25,7 +25,7 @@ class Database:
 
     def __connect(self):
         try:
-            self._client = motor.motor_asyncio.AsyncIOMotorClient(config_dict['DATABASE_URL'])
+            self._client = AsyncIOMotorClient(DATABASE_URL)
             self.db = self._client.hydro
             self.col = self.db.users
             self.black = self.db.blacklist
