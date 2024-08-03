@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
 
 # Set environment variables to prevent Python from writing .pyc files to disk
 # and to buffer stdout and stderr so that it behaves like a regular program
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
 WORKDIR /app
@@ -26,4 +26,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Run the application
-CMD ["python3", "update.py", "&&", "python3", "-m", "WebStreamer"]
+CMD sh -c "python3 update.py && python3 -m WebStreamer"
