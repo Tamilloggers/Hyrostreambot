@@ -3,7 +3,7 @@ from os import path , environ
 from subprocess import run
 from requests import get
 from dotenv import load_dotenv, dotenv_values
-import motor.motor_asyncio
+from pymongo import MongoClient
 
 
 
@@ -23,7 +23,7 @@ if len(DATABASE_URL) == 0:
     DATABASE_URL = None
 
 if DATABASE_URL is not None:
-    client = motor.motor_asyncio.AsyncIOMotorClient(DATABASE_URL)
+    client = MongoClient(DATABASE_URL)
     db = client.hydro
     old_config = db.settings.deployConfig.find_one({'_id': bot_id})
     config_dict = db.settings.config.find_one({'_id': bot_id})
