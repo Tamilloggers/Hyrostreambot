@@ -6,7 +6,7 @@ from urllib import request
 from os import environ
 from dotenv import dotenv_values
 from logging import getLogger
-import motor.motor_asyncio
+from pymongo import MongoClient
 
 __version__ = "2.5.0"
 StartTime = time.time()
@@ -28,7 +28,7 @@ if len(DATABASE_URL) == 0:
     DATABASE_URL = ''
 
 if DATABASE_URL:
-    client = motor.motor_asyncio.AsyncIOMotorClient(DATABASE_URL)
+    client = MongoClient(DATABASE_URL)
     db = client.hydro
     current_config = dict(dotenv_values('config.env'))
     old_config = db.settings.deployConfig.find_one({'_id': bot_id})
