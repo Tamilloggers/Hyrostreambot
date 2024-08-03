@@ -3,9 +3,9 @@
 import asyncio
 import logging
 from os import environ
-from ..vars import Var
+from .. import config_dict, multi_clients, work_loads
 from hydrogram import Client
-from . import multi_clients, work_loads, StreamBot
+from . import StreamBot
 
 
 async def initialize_clients():
@@ -38,10 +38,10 @@ async def initialize_clients():
                 print("This will take some time, please wait...")
             client = await Client(
                 name=str(client_id),
-                api_id=Var.API_ID,
-                api_hash=Var.API_HASH,
+                api_id=config_dict['API_ID'],
+                api_hash=config_dict['API_HASH'],
                 bot_token=bot_token,
-                sleep_threshold=Var.SLEEP_THRESHOLD,
+                sleep_threshold=config_dict['SLEEP_THRESHOLD'],
                 no_updates=True,
                 session_string=session_string,
                 in_memory=True,
@@ -55,7 +55,7 @@ async def initialize_clients():
     clients = await asyncio.gather(*[start_client(i, token) for i, token in all_tokens.items()])
     multi_clients.update(dict(clients))
     if len(multi_clients) != 1:
-        Var.MULTI_CLIENT = True
+        config_dict['MULTI_CLIENT'] = True
         print("Multi-Client Mode Enabled")
     else:
         print("No additional clients were initialized, using default client")
