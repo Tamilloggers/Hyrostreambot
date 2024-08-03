@@ -61,13 +61,8 @@ else:
 MULTI_CLIENT = False
 
 API_ID = int(environ.get("API_ID", ""))
-if API_ID == 0:
-    API_ID = 24826284
 
 API_HASH = str(environ.get("API_HASH", ""))
-if len(API_HASH) == 0:
-    API_HASH = ""
-
 
 SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))
 if SLEEP_THRESHOLD == 0:
@@ -78,8 +73,6 @@ if WORKERS == 0:
     WORKERS = 6
 
 BIN_CHANNEL = int(environ.get("BIN_CHANNEL", ""))
-if BIN_CHANNEL == 0:
-    BIN_CHANNEL = ""
 
 PORT = int(environ.get("PORT", 8080))
 if PORT == 0:
