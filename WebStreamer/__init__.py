@@ -4,7 +4,7 @@
 import time
 from urllib import request
 from os import environ
-from dotenv import dotenv_values
+from dotenv import load_dotenv, dotenv_values
 from logging import getLogger
 from pymongo import MongoClient
 
@@ -15,6 +15,11 @@ LOGGER = getLogger(__name__)
 
 multi_clients = {}
 work_loads = {}
+
+
+load_dotenv('config.env', override=True)
+
+
 
 BOT_TOKEN = str(environ.get("BOT_TOKEN", ""))
 if len(BOT_TOKEN) == 0:
