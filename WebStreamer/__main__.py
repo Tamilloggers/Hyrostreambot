@@ -5,7 +5,7 @@ import asyncio
 import logging
 import traceback
 import logging.handlers as handlers
-from . import config_dict
+from .vars import SECONDARY, KEEP_ALIVE, PORT, URL, BIND_ADDRESS
 from aiohttp import web
 from hydrogram import idle
 from WebStreamer.bot import StreamBot
@@ -35,7 +35,7 @@ loop = asyncio.get_event_loop()
 
 async def start_services():
     print()
-    if config_dict['SECONDARY']:
+    if SECONDARY:
         print("------------------ Starting as Secondary Server ------------------")
     else:
         print("------------------- Starting as Primary Server -------------------")
@@ -51,21 +51,21 @@ async def start_services():
     print("---------------------- Initializing Clients ----------------------")
     await initialize_clients()
     print("------------------------------ DONE ------------------------------")
-    if config_dict['KEEP_ALIVE']:
+    if KEEP_ALIVE:
         print("------------------ Starting Keep Alive Service ------------------")
         print()
         asyncio.create_task(ping_server())
     print()
     print("--------------------- Initializing Web Server ---------------------")
     await server.setup()
-    await web.TCPSite(server, config_dict['BIND_ADDRESS'], config_dict['PORT']).start()
+    await web.TCPSite(server, BIND_ADDRESS, PORT).start()
     print("------------------------------ DONE ------------------------------")
     print()
     print("------------------------- Service Started -------------------------")
     print("                        bot =>> {}".format(bot_info.first_name))
     if bot_info.dc_id:
         print("                        DC ID =>> {}".format(str(bot_info.dc_id)))
-    print(" URL =>> {}".format(config_dict['URL']))
+    print(" URL =>> {}".format(URL))
     print("------------------------------------------------------------------")
     await idle()
 
