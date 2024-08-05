@@ -1,6 +1,7 @@
 # Code optimized by fyaz05
 # Code from SpringsFern
-
+import os
+import sys
 import math
 from WebStreamer import __version__
 from WebStreamer.bot import StreamBot
@@ -118,11 +119,14 @@ async def getfile(bot: Client, message: Message):
         except FileNotFound:
             await message.reply_text(f"{x} :File Not Found")
 
-@StreamBot.on_message(filters.command('restart'))
+@StreamBot.on_message(filters.command('restart') & filters.user(config_dict['OWNER_ID']))
+async def restart(client, message):
     reply = await message.reply_text('Restarting...')
-    textx = f"Done Restart...✅"
-    await reply.edit_text(textx)
     try:
-        exit()
-    finally:
-        osexecl(executable, executable, "-m", "WebStreamer")
+        textx = "Done Restart...✅"
+        await reply.edit_text(textx)
+       
+        os.execl(sys.executable, sys.executable, "-m", "WebStreamer")
+    except Exception as e:
+        await reply.edit_text(f"Failed to restart: {e}")
+        logging.error(f"Failed to restart: {traceback.format_exc()}")
