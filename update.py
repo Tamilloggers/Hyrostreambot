@@ -45,7 +45,7 @@ UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'master')
 
 # Update the repository if UPSTREAM_REPO is set
 if UPSTREAM_REPO is not None:
-    if ospath.exists('.git'):
+    if path.exists('.git'):
         run(["rm", "-rf", ".git"])
 
     update = run([f"git init -q \
