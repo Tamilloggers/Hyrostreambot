@@ -1,4 +1,5 @@
 import logging
+from logging import info, error
 from os import path, environ
 from subprocess import run
 from requests import get
@@ -43,24 +44,23 @@ UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/Tamilloggers/Hy
 UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'master')
 
 # Update the repository if UPSTREAM_REPO is set
-if UPSTREAM_REPO:
-    if path.exists('.git'):
+if UPSTREAM_REPO is not None:
+    if ospath.exists('.git'):
         run(["rm", "-rf", ".git"])
 
-    git_command = f"""
-    git init -q &&
-    git config --global user.email "doc.adhikari@gmail.com" &&
-    git config --global user.name "weebzone" &&
-    git add . &&
-    git commit -sm "update" -q &&
-    git remote add origin {UPSTREAM_REPO} &&
-    git fetch origin -q &&
-    git reset --hard origin/{UPSTREAM_BRANCH} -q
-    """
+    update = run([f"git init -q \
+                     && git config --global user.email doc.adhikari@gmail.com \
+                     && git config --global user.name weebzone \
+                     && git add . \
+                     && git commit -sm update -q \
+                     && git remote add origin {UPSTREAM_REPO} \
+                     && git fetch origin -q \
+                     && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
 
-    update = run(git_command, shell=True)
-
+    repo = UPSTREAM_REPO.split('/')
+    UPSTREAM_REPO = f"https://github.com/{repo[-2]}/{repo[-1]}"
     if update.returncode == 0:
-        logger.info('Successfully updated with latest commit from UPSTREAM_REPO')
+        info('Successfully updated with latest commits !!')
     else:
-        logger.error('Something went wrong while updating, check UPSTREAM_REPO if valid or not!')
+        error('Something went Wrong ! Retry or Ask Support !')
+    info(f'UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
